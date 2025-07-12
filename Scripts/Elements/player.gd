@@ -10,8 +10,8 @@ var prev_dir = 1
 var double_jump = false
 var JUMP_VELOCITY = -600.0
 
-func grav(velocity: Vector2):
-	if velocity.y < 0:
+func grav(vel: Vector2):
+	if vel.y < 0:
 		return get_gravity().y
 	else:
 		if is_on_wall():
@@ -31,14 +31,14 @@ func _physics_process(delta: float) -> void:
 		fall_scan = true
 		#$"../CanvasLayer/ColorRect".shake(0.05)
 		falling = false
-		var tween = create_tween().set_trans(Tween.TRANS_SINE)
-		tween.tween_property($Sprite2D,"scale",Vector2(2,0.5),0.1)
-		tween.set_parallel(true)
-		tween.tween_property($Sprite2D,"position:y",10,0.1)
-		tween.set_parallel(false)
-		tween.tween_property($Sprite2D,"scale",Vector2(1,1),0.1)
-		tween.set_parallel(true)
-		tween.tween_property($Sprite2D,"position:y",0,0.1)
+		var tweens = create_tween().set_trans(Tween.TRANS_SINE)
+		tweens.tween_property($Sprite2D,"scale",Vector2(2,0.5),0.1)
+		tweens.set_parallel(true)
+		tweens.tween_property($Sprite2D,"position:y",10,0.1)
+		tweens.set_parallel(false)
+		tweens.tween_property($Sprite2D,"scale",Vector2(1,1),0.1)
+		tweens.set_parallel(true)
+		tweens.tween_property($Sprite2D,"position:y",0,0.1)
 		
 	var tween = create_tween().set_parallel()
 	#if abs(velocity.x) > 0 and is_on_floor():
